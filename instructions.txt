@@ -209,12 +209,6 @@ change line...
 • NAME=="", ENV{ID_NET_NAME}!="", NAME="wlan1"
   ...make sure with ifconfig no other adapter has same name
 
-AND OR
-• A; B    Run A and then B, regardless of success of A
-• A && B  Run B if A succeeded
-• A || B  Run B if A failed
-• A &     Run A in background.
-
 Scan all ports
 • nmap -sT -sU -p- IP_ADDR
 
