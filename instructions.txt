@@ -1,0 +1,225 @@
+********************************************************
+Straightforward Training™
+Advance Linux Commands
+Author: Saulo S. Ortiz
+Date: 20180614
+********************************************************
+
+DISCLAIMER:
+Do not just memorize them, use them constantly so you can learn them. They will come up during an interview.
+
+
+What is the loopback address
+• 127.0.0.1
+• ::1
+
+Get a list of devices attached UUIDs
+• blkid
+
+Find a program
+• which <program>
+• locate <program>
+• find <program>
+
+Create a file
+• touch <name.txt>
+
+How do you search for programs
+  1.	Man pages
+  2.	Googlefu
+  3.	Stackoverflow
+
+Mount a volume at bootup
+• less /etc/fstab
+
+Mount manually
+  1.	Go to /mnt
+  2.	mount /dev/sda2 /mnt
+
+View mounted volumes
+• mount
+
+Check CPU usage of a prosess
+• ps aux | grep <program>
+• top
+• htop
+
+check for open ports=listening network sockets
+• netstat -tulpn
+
+check total size in a directory
+• du –sh <folder>
+
+check services
+• service udev status
+• servictl status dev		-new systems
+
+check all services
+• service –-status-all
+
+difference between chmod a+x and chmod 755
+• a stands for ‘all’
+• x stand for executable
+	adds executable bits to the file but will not touch any of the 	other bits and will be unreadable to others/groups
+• 755 gives permanent permission to all groups
+
+wifi specs
+• iw wlan0 scan
+
+search and kill processes
+• top
+• xkill
+• killall <program>
+• kill -9 <pid>
+• kill <pid>
+• pkill <pid>
+• ps -A
+• ps -A | grep <program>
+• pgrep <program>
+• renice 19 <program>
+	 (-19 = high priority, 19 = low priority)
+
+delete repositories
+• use software & update program...ubuntu
+
+view repositories
+• grep ^ /etc/apt/source.list /etc/apt/sources.list.d/*
+
+find/manipulate wireless configuration
+• iw dev
+
+find specific program process
+• ps aux | grep snort
+
+find kernel version
+• uname –a	all
+• uname –r	read
+• uname –v	version
+
+registry
+• /proc for kernel related stuff
+• /etc/ for software related stuff
+  *gnome config is considered similar to Windows registry
+
+find architecture (x86/64)
+• arch
+• uname –m
+
+find linux version
+• uname -a
+
+find hardware specs
+• lscpu
+
+find file
+• find / -name filename
+
+kali has no firewall so insert rules into iptables to add or block
+• iptables -I INPUT -p tcp -–dport 23 -j DROP
+
+check arp table
+• arp -a
+
+find gateway
+• ip route |grep defaults
+
+add line numbers to nano
+• sudo nano .nanoyrc
+	set constantshow
+
+netcat communication to run commands
+• listening: nc -nlvp 4444 -e /bin/bash
+• client: nc -nv ip_addr 4444
+	*Remove netcat-openbsd and install netcat-traditional
+
+find users
+• less /etc/passwd
+
+remove users
+• userdel username
+
+remove user and user files
+• userdel -r username
+
+Install desktop GUI no extras into Ubuntu server
+• sudo apt-get install gnome-shell
+https://askubuntu.com/questions/53822/how-do-you-run-ubuntu-server-with-a-gui
+
+check hdd space:
+• df -h
+
+remove program:
+• sudo vmware-installer -u vmware player
+
+check memory:
+• free -m -h
+
+check hardware:
+• lspci
+
+check video card:
+• lspci | grep VGA
+• find /dev -group video
+• glxinfo | grep -i vendor
+
+	easier:
+	• lspci – k | grep ‘VGA|3D|Display’
+
+	another:
+	• lshw -c video
+
+remove apt-get install programs:
+• sudo apt-get remove –purge ??? -y
+
+clear cache:
+• sudo su
+• echo 3 > /proc/sys/vm/drop_caches
+
+read logs
+• less /var/log
+
+find android attached screen size and other info:
+• gtf 600 975 60
+
+find inode/find chmod number and permissions
+• ls -il
+• stats
+
+reverse time order
+• ls -rt
+
+FYI...
+• ~/ = home
+• / = root
+
+chmod permissions with numbers
+• stats
+
+add numbers to nano
+• nano ~/.nanorc
+• type...set constantshow
+
+change wireless adapter name
+• sudo cp /lib/udev/rules.d/80-net-setup-link.rules /etc/udev/rules.d
+• cd /etc/udev/rules.d
+• nano 80-net-setup-link.rules
+change line...
+• NAME=="", ENV{ID_NET_NAME}!="", NAME="$env{id_net_name}"
+  to...
+• NAME=="", ENV{ID_NET_NAME}!="", NAME="wlan1"
+  ...make sure with ifconfig no other adapter has same name
+
+AND OR
+• A; B    Run A and then B, regardless of success of A
+• A && B  Run B if A succeeded
+• A || B  Run B if A failed
+• A &     Run A in background.
+
+Scan all ports
+• nmap -sT -sU -p- IP_ADDR
+
+Discover DHCP information
+• nmap --script broadcast-dhcp-discover -e wlan0
+
+setup su password
+• sudo passwd root
