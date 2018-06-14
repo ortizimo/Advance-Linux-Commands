@@ -1,0 +1,1 @@
+Use them constantly not just memorized them...that does you no good. They will come up during a job interview if you mention you have Linux experience. Use the metasploit training or the RPi3 training to get more Linux experience.
